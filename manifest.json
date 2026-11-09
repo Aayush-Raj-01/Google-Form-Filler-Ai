@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Forms Solver",
+  "version": "1.0.0",
+  "description": "Automatically solves Google Forms questions by Rashmalaiog",
+  "author": "Rashmalaiog",
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "identity",
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "service/service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}

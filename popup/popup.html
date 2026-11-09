@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Solver</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <img src="../assets/icon48.png" alt="Forms Solver" class="app-logo">
+                <div class="header-titles">
+                    <div class="title-row">
+                        <h1>Forms Solver</h1>
+                        <span class="version-tag">PRO</span>
+                    </div>
+                    <p class="app-subtitle">Automated Form Processing Utility</p>
+                    <p class="app-author">by Rashmalaiog</p>
+                </div>
+            </div>
+            <button id="settingsToggleBtn" class="icon-btn" title="Configuration" aria-label="Configuration">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </button>
+        </header>
+
+        <!-- Unconfigured Alert Banner -->
+        <div id="configWarningBanner" class="warning-banner hidden">
+            <div class="warning-content">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span>Setup required: Configure processing engine in Settings.</span>
+            </div>
+            <button id="openSettingsFromBanner" class="banner-btn">Configure</button>
+        </div>
+
+        <!-- MAIN VIEW -->
+        <main id="mainView" class="view-panel">
+            <div class="actions-group">
+                <button id="scanBtn" class="btn btn-primary">
+                    <span class="btn-spinner hidden"></span>
+                    <svg class="btn-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span class="btn-label">Scan Form</span>
+                </button>
+                <button id="solveBtn" class="btn btn-success hidden">
+                    <span class="btn-spinner hidden"></span>
+                    <svg class="btn-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span class="btn-label">Solve & Autofill (<span id="solveCountBadge">0</span>)</span>
+                </button>
+            </div>
+
+            <div id="statusContainer" class="status-container">
+                <div id="statusDot" class="status-dot"></div>
+                <span id="status" class="status-text">Ready to scan Google Form</span>
+            </div>
+
+            <div id="summaryBar" class="summary-bar hidden">
+                <span id="summaryTotal" class="summary-pill total">
+                    <span class="pill-dot"></span>
+                    <span class="pill-text">0 Total</span>
+                </span>
+                <span id="summarySolve" class="summary-pill solve">
+                    <span class="pill-dot"></span>
+                    <span class="pill-text">0 Ready</span>
+                </span>
+                <span id="summarySkip" class="summary-pill skip">
+                    <span class="pill-dot"></span>
+                    <span class="pill-text">0 Excluded</span>
+                </span>
+                <span id="summaryAccount" class="summary-pill account hidden">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span class="pill-text"></span>
+                </span>
+            </div>
+
+            <!-- Empty state guide -->
+            <div id="emptyState" class="empty-state">
+                <div class="empty-icon-wrap">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <h3 class="empty-title">Ready to Automate</h3>
+                <p class="empty-desc">Open a Google Form and click <strong>Scan Form</strong> to inspect questions and prepare automated responses.</p>
+                <div class="empty-steps">
+                    <div class="step-item"><span class="step-num">1</span> Open Google Form tab</div>
+                    <div class="step-item"><span class="step-num">2</span> Click <strong>Scan Form</strong></div>
+                    <div class="step-item"><span class="step-num">3</span> Click <strong>Solve & Autofill</strong></div>
+                </div>
+            </div>
+
+            <div id="results" class="results-list"></div>
+        </main>
+
+        <!-- SETTINGS VIEW -->
+        <section id="settingsView" class="view-panel hidden">
+            <div class="settings-header">
+                <h2>Engine Configuration</h2>
+                <button id="backToMainBtn" class="btn-text">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    Back
+                </button>
+            </div>
+
+            <div class="form-group">
+                <label for="providerSelect">Processing Engine</label>
+                <select id="providerSelect" class="form-control">
+                    <option value="gemini">Google Cloud Engine</option>
+                    <option value="openai">Standard Cloud Engine</option>
+                    <option value="openrouter">Universal Cloud Router</option>
+                    <option value="omniroute">OmniRoute Service</option>
+                    <option value="freellm">Cloud Proxy Service</option>
+                    <option value="custom">Custom / Local Endpoint</option>
+                </select>
+            </div>
+
+            <div id="endpointGroup" class="form-group hidden">
+                <label for="endpointInput">Service Endpoint URL</label>
+                <input type="text" id="endpointInput" class="form-control" placeholder="https://api.omniroute.io/v1/chat/completions">
+                <small class="form-hint">Supports base host or completions route</small>
+            </div>
+
+            <div class="form-group">
+                <label for="modelSelect">Engine Preset</label>
+                <select id="modelSelect" class="form-control"></select>
+            </div>
+
+            <div class="form-group">
+                <div class="label-with-action">
+                    <label for="modelInput">Engine Identifier</label>
+                    <button type="button" id="autoPickBtn" class="btn-micro" title="Auto-detect active engine">
+                        Detect Engine
+                    </button>
+                </div>
+                <input type="text" id="modelInput" class="form-control" placeholder="e.g. gpt-4o-mini">
+            </div>
+
+            <div class="form-group">
+                <label for="apiKeyInput">Access Key</label>
+                <div class="input-with-action">
+                    <input type="password" id="apiKeyInput" class="form-control" placeholder="Enter access key...">
+                    <button type="button" id="toggleApiKeyVisibility" class="btn-icon-inside" title="Show/Hide">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
+                <small id="providerHint" class="form-hint"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="customEmailInput">Account Email (Optional)</label>
+                <input type="email" id="customEmailInput" class="form-control" placeholder="Auto-detected from Google Form">
+                <small class="form-hint">Used for usage logging in your sheet. Automatically detected from Google Form if left blank.</small>
+            </div>
+
+            <div id="testStatus" class="test-status hidden"></div>
+
+            <div class="settings-actions">
+                <button id="testConnectionBtn" class="btn btn-secondary">
+                    Verify Connection
+                </button>
+                <button id="saveSettingsBtn" class="btn btn-primary">
+                    Save Configuration
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <span>Forms Solver • by <strong>Rashmalaiog</strong></span>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
