@@ -6,12 +6,12 @@
 
 <p align="center">
   <strong>Automated Google Forms Completion & Verification Utility</strong><br>
-  <em>Engineered for speed, precision, and privacy.</em>
+  <em>Engineered for speed, efficiency, and accurate form autofilling.</em>
 </p>
 
 <p align="center">
-  <a href="#-installation"><img src="https://img.shields.io/badge/Chrome-Extension-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Chrome Extension"></a>
-  <a href="#-installation"><img src="https://img.shields.io/badge/Edge-Add--on-0078D7?style=for-the-badge&logo=microsoftedge&logoColor=white" alt="Edge Add-on"></a>
+  <a href="#-installation-guide"><img src="https://img.shields.io/badge/Chrome-Extension-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Chrome Extension"></a>
+  <a href="#-installation-guide"><img src="https://img.shields.io/badge/Edge-Add--on-0078D7?style=for-the-badge&logo=microsoftedge&logoColor=white" alt="Edge Add-on"></a>
   <img src="https://img.shields.io/badge/Manifest-V3-10b981?style=for-the-badge" alt="Manifest V3">
   <img src="https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge" alt="Version 1.0.0">
   <img src="https://img.shields.io/badge/Author-Rashmalaiog-purple?style=for-the-badge" alt="Author Rashmalaiog">
@@ -28,11 +28,10 @@
   - [Google Chrome & Brave](#1-google-chrome--brave)
   - [Microsoft Edge](#2-microsoft-edge)
 - [Usage Walkthrough](#-usage-walkthrough)
-- [Engine Setup & Configuration](#-engine-setup--configuration)
-- [Google Sheets Audit Tracker](#-google-sheets-audit-tracker)
-- [Privacy & Security Rules](#-privacy--security-rules)
-- [Project Structure](#-project-structure)
-- [License & Author](#-license--author)
+- [Service & Engine Configuration](#-service--engine-configuration)
+- [Privacy & Security Guardrails](#-privacy--security-guardrails)
+- [Project Directory Structure](#-project-directory-structure)
+- [Author & Credits](#-author--credits)
 
 ---
 
@@ -40,10 +39,10 @@
 
 **Forms Solver** is a high-performance browser extension (Manifest V3) that inspects, analyzes, and automatically fills objective questions on **Google Forms** in a single click.
 
-Whether tackling study assessments, quiz reviews, or repetitive questionnaire data entries, Forms Solver automates DOM selection with verified answers while strictly protecting personal information.
+Whether reviewing quizzes, auditing study forms, or processing repetitive multi-choice questionnaires, Forms Solver automates selection directly inside the Google Form DOM with verified answers while safeguarding personal information.
 
 > [!NOTE]
-> Designed with an executive dark UI and zero chatbot fluff — built as a streamlined automation utility.
+> Engineered with a professional, dark enterprise interface — focused entirely on reliable form automation with zero unnecessary complexity.
 
 ---
 
@@ -51,12 +50,12 @@ Whether tackling study assessments, quiz reviews, or repetitive questionnaire da
 
 | Capability | Description |
 |---|---|
-| **⚡ 1-Click Solve & Autofill** | Analyzes all questions and autofills verified choices directly into the Google Form DOM in seconds. |
-| **🛡️ Smart Privacy Classifier** | Automatically detects and skips personal fields (names, phone numbers, roll numbers, addresses) to protect your identity. |
-| **🖼️ Diagram & Visual Recognition** | Inspects card images and diagram options, converting blob and canvas data for visual problem solving. |
-| **🔌 Universal Engine Support** | Connects to Google Cloud Engine (Gemini), Standard Cloud (OpenAI), OpenRouter, OmniRoute, or custom local endpoints. |
-| **📊 Real-time Metrics & Account Detection** | Displays live question counts (`Total`, `Ready`, `Excluded`) and automatically detects the active respondent Google Account. |
-| **📈 Sheet Telemetry Logging** | Automatically logs unique usage counts, timestamps, form URLs, device types, and network info to your Google Sheet. |
+| **⚡ 1-Click Form Autofill** | Parses question structures and automatically selects verified options directly in the Google Form DOM in seconds. |
+| **🛡️ Smart Privacy Filter** | Automatically detects and skips personal identification fields (names, phone numbers, roll numbers, addresses) to protect your identity. |
+| **📐 Diagram & Visual Input Inspection** | Inspects question cards and diagram options, converting visual data for accurate problem matching. |
+| **🔌 Multi-Service Engine Compatibility** | Connects to standard cloud verification services, high-speed routing engines, or local custom endpoints. |
+| **📊 Real-time Form Audit & Account Display** | Displays live question metrics (`Total`, `Ready`, `Excluded`) and shows the active respondent Google Account session. |
+| **🎯 Multiple Question Types** | Full support for Single-Choice (Radio Buttons), Multi-Choice (Checkboxes), and Image-based question cards. |
 
 ---
 
@@ -65,20 +64,19 @@ Whether tackling study assessments, quiz reviews, or repetitive questionnaire da
 ```mermaid
 flowchart LR
     A[Open Google Form] --> B[Click Scan Form]
-    B --> C{Classifier Filter}
-    C -->|Personal Info| D[Excluded from Fill]
-    C -->|Objective MCQs / Checkbox| E[Ready to Solve]
+    B --> C{Privacy Rule Filter}
+    C -->|Personal Fields| D[Excluded from Fill]
+    C -->|Objective MCQs & Checkboxes| E[Ready to Fill]
     E --> F[Click Solve & Autofill]
-    F --> G[Processing Engine]
-    G --> H[DOM Auto-selection]
-    H --> I[(Google Sheet Audit Log)]
+    F --> G[Verification Service Engine]
+    G --> H[DOM Auto-selection Complete]
 ```
 
 ---
 
 ## 💻 Installation Guide
 
-You can load **Forms Solver** into any Chromium-based browser (Chrome, Edge, Brave, Opera, Vivaldi) in under 60 seconds without needing the store.
+You can load **Forms Solver** into any Chromium-based browser (Chrome, Edge, Brave, Opera, Vivaldi) in under 60 seconds:
 
 ### 1. Google Chrome & Brave
 
@@ -87,14 +85,14 @@ You can load **Forms Solver** into any Chromium-based browser (Chrome, Edge, Bra
    git clone https://github.com/Rashmalaiog/Forms-Solver.git
    ```
    *(Or download the ZIP and extract it to a folder).*
-2. Open Google Chrome and navigate to:
+2. Open your browser and navigate to:
    ```text
    chrome://extensions
    ```
 3. Enable **Developer mode** using the toggle switch in the top-right corner.
 4. Click the **Load unpacked** button in the top-left corner.
-5. In the file picker, select the project directory (`porject1` containing `manifest.json`).
-6. 🎉 **Forms Solver** is now installed! Pin it to your Chrome toolbar for easy access.
+5. In the file picker, select the project directory containing `manifest.json`.
+6. 🎉 **Forms Solver** is now installed! Pin it to your browser toolbar for quick access.
 
 ---
 
@@ -118,101 +116,72 @@ Navigate to any active Google Form tab (`https://docs.google.com/forms/...`).
 
 ### Step 2: Open Extension & Scan
 Click the **Forms Solver** icon in your toolbar, then click **Scan Form**:
-* The extension analyzes question cards, detects images, and inspects option structures.
-* The summary bar shows detected items:
-  * 🟢 **Total** questions count
+* The extension inspects question cards, detects images, and analyzes option choices.
+* The summary bar displays detected items:
+  * ⚪ **Total** question cards found
   * 🔵 **Ready** eligible objective questions
   * ⚪ **Excluded** personal info fields
   * 🟢 **Active Account** (e.g. `student@gmail.com`)
 
 ### Step 3: Click Solve & Autofill
 Click the green **Solve & Autofill** button:
-* The extension connects to your configured engine.
-* Answers are evaluated with high confidence.
-* The extension simulates natural mouse events to select the radio buttons or checkboxes.
+* The extension connects to your configured processing engine.
+* Verified answers are matched with high confidence.
+* The extension automatically selects the correct radio button or checkbox options in the page.
 * Badges update to **COMPLETED** with an accuracy match rating!
 
 ---
 
-## ⚙️ Engine Setup & Configuration
+## ⚙️ Service & Engine Configuration
 
-Click the **Gear Icon (⚙️)** in the popup header to configure your processing engine:
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Google_Cloud-Gemini_1.5_Flash-4285F4?style=flat-square" alt="Gemini">
-  <img src="https://img.shields.io/badge/Standard_Cloud-GPT--4o_Mini-10a37f?style=flat-square" alt="OpenAI">
-  <img src="https://img.shields.io/badge/OpenRouter-Multi--Model-6366f1?style=flat-square" alt="OpenRouter">
-  <img src="https://img.shields.io/badge/Custom-Local_Endpoint-64748b?style=flat-square" alt="Custom">
-</p>
+Click the **Gear Icon (⚙️)** in the popup header to configure your processing service:
 
 1. **Processing Engine**:
-   - `Google Cloud Engine` (Gemini 1.5 Flash / 2.0 Flash) — *Recommended: Fast & High Rate Limits*
-   - `Standard Cloud Engine` (GPT-4o Mini / GPT-4o)
-   - `Universal Cloud Router` (OpenRouter)
-   - `OmniRoute Service`
-   - `Cloud Proxy Service` (FreeLLM)
-   - `Custom / Local Endpoint` (Ollama, vLLM, LocalAI)
-2. **Access Key**: Paste your API key / access token.
-3. **Verify Connection**: Click to test endpoint connectivity.
+   - `Google Cloud Engine` — *Fast & high-throughput cloud processing*
+   - `Standard Cloud Engine` — *Standard processing server*
+   - `Universal Cloud Router` — *High-availability routing proxy*
+   - `OmniRoute Service` — *Multi-route engine connection*
+   - `Cloud Proxy Service` — *Public service proxy*
+   - `Custom / Local Endpoint` — *Self-hosted private server or local host*
+2. **Access Key**: Paste your service access token or API key.
+3. **Verify Connection**: Click to verify server connectivity.
 4. **Save Configuration**: Click to save securely in local browser storage.
 
 ---
 
-## 📊 Google Sheets Audit Tracker
+## 🛡️ Privacy & Security Guardrails
 
-Forms Solver is linked with an automated Google Sheet webhook via **Google Apps Script**. Every time a form is solved, it logs:
+Forms Solver is designed with privacy-first principles:
 
-- **Email**: Authenticated Google account or custom specified email
-- **Usage Count**: Cumulative runs per unique user
-- **Form URL & Title**: Link and name of the solved form
-- **Solved / Skipped Metrics**: Question count per run
-- **Timestamp & Local Time**: Exact run time
-- **Network & IP Info**: Public IP, Country, Region, and ISP
-- **Device Specifications**: OS, Browser build, and Device category
-
-### Custom Webhook Deployment (Optional)
-If you wish to log to your own personal spreadsheet:
-1. Open Google Sheets and create a new sheet named `Usage Log`.
-2. Go to **Extensions > Apps Script** and paste [`assets/tracker-apps-script.gs`](assets/tracker-apps-script.gs).
-3. Click **Deploy > New Deployment > Web App** (Set access to *Anyone*).
-4. Copy the deployment URL and update `DEFAULT_TRACKER_WEBHOOK` in `service/tracker.js`.
+* **Zero Credential Sharing**: All access tokens and engine configurations are stored strictly on your local device via `chrome.storage.local`.
+* **Automatic Personal Data Protection**: Questions asking for names, emails, student IDs, phone numbers, or addresses are automatically excluded from automated autofilling.
+* **On-Demand Execution**: Scripts activate solely when you press **Scan** or **Solve & Autofill** — zero background tracking when closed.
 
 ---
 
-## 🛡️ Privacy & Security Rules
-
-Forms Solver is engineered with strict guardrails:
-
-* **Zero Credential Transmission**: API keys are stored solely on your device via `chrome.storage.local`.
-* **Personal Data Protection**: Questions asking for names, emails, student IDs, phone numbers, addresses, or birthdays are automatically bypassed.
-* **On-Demand Activation**: Content scripts run only when you explicitly press **Scan** or **Solve**.
-
----
-
-## 📁 Project Structure
+## 📁 Project Directory Structure
 
 ```text
 porject1/
 ├── manifest.json              # Extension manifest (Manifest V3)
-├── assets/                    # App icons & Apps Script webhook backend
+├── assets/                    # Extension visual assets
 │   ├── icon16.png
 │   ├── icon48.png
-│   ├── icon128.png
-│   └── tracker-apps-script.gs
-├── popup/                     # User interface
+│   └── icon128.png
+├── popup/                     # Extension user interface
 │   ├── popup.html             # Executive dark layout
 │   ├── popup.css              # Modern UI styling & animations
 │   └── popup.js               # Event handling & state management
 ├── content/                   # Injected page scripts
 │   ├── scanner.js             # Form DOM scanner & account detector
-│   ├── filler.js              # High-fidelity input autofiller
+│   ├── filler.js              # Input auto-selection controller
 │   └── image.js               # Canvas & visual asset converter
-├── service/                   # Background service worker & engines
+├── service/                   # Background service worker & engine connectors
 │   ├── service-worker.js      # MV3 extension worker
-│   ├── tracker.js             # Sheet audit logging & telemetry
-│   ├── classifier.js          # Privacy question classifier
-│   └── ai.js                  # Engine API connectors
-└── PRIVACY_POLICY.md          # Store compliance privacy policy
+│   ├── tracker.js             # Session & count manager
+│   ├── classifier.js          # Privacy rule filter
+│   └── ai.js                  # Processing engine connector
+└── PRIVACY_POLICY.md          # Compliance privacy policy
 ```
 
 ---
