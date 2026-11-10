@@ -19,6 +19,8 @@
 
 ---
 
+## HERE IS THE PUBLISHED LINK - https://microsoftedge.microsoft.com/addons/detail/forms-solver/bhlkjeehhohgddihnjgoibgodpaldoag
+
 ## 📌 Table of Contents
 
 - [About The Project](#-about-the-project)
